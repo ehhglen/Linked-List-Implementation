@@ -23,9 +23,11 @@ public abstract class List implements MyCollectionInterface {
        catch(Exception e) {
            System.err.println("Unable to add item to the list.");
        }
-
-
        
    } // End add
+
+   public T remove() {
+
+   } // End remove
 
 } // End class 
