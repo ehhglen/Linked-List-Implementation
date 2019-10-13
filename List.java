@@ -1,11 +1,12 @@
-public abstract class List implements MyCollectionInterface {
+public abstract class List implements MyCollectionInterface<T> {
 
     // Declare variables
 
-    Node head;
-    int numberOfEntries;
+    private Node head;
+    private Node firstNode;
+    private int numberOfEntries;
 
-
+    @Override
    public boolean add(T newItem) {
        Node newNode;
        newNode.setData = newItem;
@@ -26,8 +27,29 @@ public abstract class List implements MyCollectionInterface {
        
    } // End add
 
-   public T remove() {
+   @Override
+   public boolean remove() { // Why is the return type incompatible?
+       // Store head node
+       Node temp = head;
+       //If head needs to be removed
+       if(numberOfEntries == 0) 
+       {
+          temp.setNextNode(head);
+          return true;
+       }
+       return false;
+
 
    } // End remove
+
+   @Override
+   public void clear() {
+       head.setNextNode(null);
+
+   } // End clear
+
+   public int getCurrentSize() {
+
+   } // End getCurrentSize
 
 } // End class 
