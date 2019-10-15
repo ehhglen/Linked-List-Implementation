@@ -8,23 +8,22 @@ public abstract class List implements MyCollectionInterface<T> {
 
     @Override
    public boolean add(T newItem) {
-       Node newNode;
-       newNode.setData = newItem;
-
-       try {
-           if(numberOfEntries == 0) {
+       if ((givenPosition >= 1) && (givenPosition <= numberOfEntries + 1)) {
+           Node newNode = new Node(newItem);
+           if(givenPosition == 1) { // Adding to beginning of chain
+               newNode.setNextNode(firstNode);
                firstNode = newNode;
-           } // End if
-           else {
-               newNode.setNextNode = firstNode;
-               firstNode = newNode;
-           }
-       } // End try
-
-       catch(Exception e) {
-           System.err.println("Unable to add item to the list.");
-       }
-       
+           } // End inner if
+           else {                   // Adding to position not beginning of chain
+               Node nodeBefore = getNodeAt(givenPosition - 1);
+               Node nodeAfter= nodeBefore.getNextNode();
+               newNode.setNextNode(nodeAfter);
+               nodeBefoere.setNextNode(newNode);
+           } // End else
+       } // End if
+       numberOfEntries++;
+      
+      
    } // End add
 
    @Override
@@ -44,12 +43,20 @@ public abstract class List implements MyCollectionInterface<T> {
 
    @Override
    public void clear() {
-       head.setNextNode(null);
-
+       firstNode = null;
+       numberOfEntries = 0;
    } // End clear
 
    public int getCurrentSize() {
+       return numberOfEntries;
 
    } // End getCurrentSize
+
+   public boolean isEmpty() {
+       if(numberOfEntries == 0) {
+           return true;
+       } // End if
+       return false;
+   } // End isEmpty
 
 } // End class 
