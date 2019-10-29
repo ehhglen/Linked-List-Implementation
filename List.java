@@ -31,6 +31,13 @@ public abstract class List implements MyCollectionInterface<T> {
 
 //*****************************************************************
 
+/**
+ * 
+ * @param givenPosition
+ * @param newItem
+ * @return True if addition was succcessful; false if not
+ */
+
 public boolean add(int givenPosition, T newItem) {
     result = false;
 
@@ -62,8 +69,17 @@ public boolean add(int givenPosition, T newItem) {
     return result;
 } // End add method
 
-   @Override
-   public boolean remove() { // Why is the return type incompatible?
+//*****************************************************************
+
+/**
+ * Removes an occurance of a given entry from the LinkedList
+ * @param The entry that is to be removed
+ * @return True if removal was successful; false if not
+ */
+
+   
+   public boolean remove(T anEntry) { 
+       result = false;
        // Store head node
        Node temp = head;
        //If head needs to be removed
@@ -77,16 +93,35 @@ public boolean add(int givenPosition, T newItem) {
 
    } // End remove
 
-   @Override
+//*****************************************************************
+
+/**
+ * Removes all entries from the list
+ */
+
    public void clear() {
-       firstNode = null;
+       head = null;
        numberOfEntries = 0;
    } // End clear
+
+//*****************************************************************
+
+/**
+ * Gets the current number of entries in list
+ * @return The number of entries
+ */
 
    public int getCurrentSize() {
        return numberOfEntries;
 
    } // End getCurrentSize
+
+//*****************************************************************
+
+/**
+ * See if list is empty
+ * @return True if empty; false if not
+ */
 
    public boolean isEmpty() {
        if(numberOfEntries == 0) {
