@@ -19,7 +19,7 @@ public abstract class List implements MyCollectionInterface<T> {
 
         Node newNode = new Node(newItem);
 
-        newNode.setNextNode = head;
+        newNode.next = head;
         head = newNode;
 
         if(head.equals(newNode)) {
@@ -154,7 +154,7 @@ public boolean add(int givenPosition, T newItem) {
 
    } // End getFrequencyOf
 
-   //*****************************************************************
+//*****************************************************************
 
    public boolean contains(T anEntry) {
        result = false;
@@ -171,5 +171,28 @@ public boolean add(int givenPosition, T newItem) {
        return result;
 
    } // End contains method 
+
+//*****************************************************************
+
+/**
+ * Retrives all entries that are in this collection
+ * 
+ * @return A newly allocated array of all the entries in this collection
+ * Note: If the collection is empty, the returned array is empty
+ */
+
+   public Object[] toArray() {
+       Object[] array = new Object[numberOfEntries];
+       int index = 0;
+       Node<T> currentNode = head;
+       
+       while((index < numberOfEntries) && (currentNode != null)) {
+           array[index] = currentNode.getData();
+           currentNode = currentNode.getNextNode();
+           index++;
+       }
+       return array;
+
+   } // End toArray method
 
 } // End class 
