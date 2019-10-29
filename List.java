@@ -130,4 +130,46 @@ public boolean add(int givenPosition, T newItem) {
        return false;
    } // End isEmpty
 
+//*****************************************************************
+
+/**
+ *  Counts the number of times a given entry appears in this collection
+ * 
+ * @param anEntry The entry that is to be counted 
+ * @return The number of times anEntry is in the collection
+ */
+
+   public int getFrequencyOf(T anEntry) {
+       Node<T> currentNode = new Node<T> (anEntry);
+       int listCount = 0;
+
+       for(int i = 0; i <= numberOfEntries; i++) {
+           if(anEntry.equals(currentNode.getData()))
+           {
+               listCount++;
+           }
+           currentNode = currentNode.getNextNode();
+       }
+       return listCount;
+
+   } // End getFrequencyOf
+
+   //*****************************************************************
+
+   public boolean contains(T anEntry) {
+       result = false;
+       Node<T> currentNode = head;
+
+       while(!result && (currentNode != null)) {
+           if(anEntry.equals(currentNode.getData()))
+           {
+               result = true;
+           } else {
+               currentNode.currentNode.getNextNode();
+           }
+       } // End while loop
+       return result;
+
+   } // End contains method 
+
 } // End class 
